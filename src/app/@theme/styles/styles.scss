@@ -1,0 +1,57 @@
+// themes - our custom or/and out of the box themes
+@import 'themes';
+
+// framework component themes (styles tied to theme variables)
+@import '../../@nebular/theme/styles/globals';
+@import '../../@nebular/auth/styles/all';
+
+// loading progress bar theme
+@import './pace.theme';
+
+@import './bootstrap-rtl';
+
+// install the framework and custom global styles
+@include nb-install() {
+
+  // framework global styles
+  @include nb-theme-global();
+  @include nb-auth-global();
+
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  // fixed in rc.9 and can be removed after upgrade
+  .custom-control .custom-control-indicator {
+    border-radius: 50%; // TODO: quickfix for https://github.com/akveo/nebular/issues/275
+  }
+  @include bootstrap-rtl();
+};
+
+
+.toast-container .toast {
+  width: 100% !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  background-image: none !important;
+  text-align: center;
+  font-family: bungee_regularregular, sans-serif;
+  font-size: 20px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  padding: 16px !important;
+  position: fixed;
+  top: 0px;
+
+  &.toast-success {
+    background: #42DA79;
+  }
+
+  &.toast-error {
+    background: rgba(255, 82, 87, 1);
+  }
+
+  .toast-title {
+    display: none;
+  }
+}

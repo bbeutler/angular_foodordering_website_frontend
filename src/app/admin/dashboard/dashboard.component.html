@@ -1,0 +1,33 @@
+<div class="col-md-12 col-lg-12 page-dashboard">
+  <span id="sales">Sales</span>
+  <span class="tab-item active" [class.active]="active_tab_item == 1" (click)="onClickTabItem(1)">30 Days</span>
+  <span class="tab-item active" [class.active]="active_tab_item == 0" (click)="onClickTabItem(0)">7 Days</span>
+</div><br>
+
+<custom-menu></custom-menu>
+
+<nb-card class="page-dashboard">
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="price">
+          <h3>${{ totalPrice }}</h3>
+          <h5>Net Payout</h5>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div echarts [options]="chartOptions" class="echart"></div>
+      </div>
+    </div><br><br>
+    <div class="row">
+      <div class="col-md-12"><h3>Top Selling Menu Items</h3></div>
+    </div>
+    <div class="row top-selling-item">
+      <div *ngFor="let item of topSellingItems" class="col-md-4">
+        <span><strong>{{ item.count }}</strong></span>
+        {{ item.name }}
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+<br><br>
